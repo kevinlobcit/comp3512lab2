@@ -6,8 +6,7 @@
 #include <random>
 #include <iomanip>
 
-int main()
-{
+void writeRandoms() {
     std::ofstream readings;
     readings.open("Readings.txt");
 
@@ -25,6 +24,12 @@ int main()
         randDouble = distribution(generator);
         readings << i << " " << std::fixed << std::setprecision(3) << randDouble << std::endl;
     }
+}
+
+int main()
+{
+    writeRandoms();
+
 
 
 
