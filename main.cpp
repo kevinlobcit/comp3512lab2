@@ -1,8 +1,9 @@
 #include <iostream>
-int main(){
-    
+int main()
+{
 
 
-    std::cout<<"Hello, World!"<<std::endl;
+
+    std::cout<<"Lab2!"<<std::endl;
     return 0;
 }
