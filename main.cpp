@@ -28,17 +28,9 @@ void writeRandoms() {
     readings.close();
 }
 
-int main()
-{
-    //writeRandoms();
-
+std::vector <double> makeDoubleVector() {
     int count = 0;
     double value = 0;
-
-    double avg = 0;
-    double highest = 0;
-    double lowest = 0;
-    double median = 0;
 
     std::vector <double> doubleVector;
 
@@ -49,20 +41,52 @@ int main()
     std::istringstream iss;
     while(getline(inFile, line))
     {
-
         iss.clear();
         iss.str(line);
-        std::cout << line << std::endl;
-
-        iss >> count;
-        //std::cout << count << " ";
-        iss >> value;
+        iss >> count >> value;
         //std::cout << value << std::endl;
         doubleVector.push_back(value);
-
     }
+    return doubleVector;
+}
+
+int main()
+{
+    //writeRandoms();
+
+    std::vector <double> dVect = makeDoubleVector();
+
+
+
 
     std::cout << "now outputting doublevector values" << std::endl;
+
+
+    int count = 0;
+    double sum = 0;
+    double highest = dVect.at(0);
+    double lowest = dVect.at(0);
+    double median = 0;
+    for(double value: dVect)
+    {
+        count++;
+        sum += value;
+        if(value > highest)
+        {
+            highest = value;
+        }
+        else if(value < lowest) {
+            lowest = value;
+        }
+        std::cout << value << std::endl;
+    }
+    double avg = sum/count;
+
+    std::cout << "There are " << count << "readings in the file."<< std::endl;
+    std::cout << "The average reading is " << avg << std::endl;
+    std::cout << "The highest reading is " << highest << std::endl;
+    std::cout << "The lowest reading is " << lowest << std::endl;
+    std::cout << "The median reading is " << median << std::endl;
 
     std::cout << "Done";
 
