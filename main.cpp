@@ -6,20 +6,20 @@
 #include <random>
 #include <iomanip>
 #include <vector>
+#include <bits/stdc++.h>
 
 void writeRandoms() {
     std::ofstream readings;
     readings.open("Readings.txt");
 
     srand (time(NULL));
-    std::default_random_engine generator(time(0));
+    //std::default_random_engine generator(time(0));
     std::uniform_real_distribution<double>distribution(50.000, 90.000);
+    std::random_device rd;
+    std::default_random_engine generator(rd());
 
     int count = (rand()%513)+512;
     double randDouble = 0;
-
-    std::cout<<"Lab2!"<<std::endl;
-    std::cout<< count;
 
     for(int i = 0; i < count; i++) {
         randDouble = distribution(generator);
@@ -50,6 +50,22 @@ std::vector <double> makeDoubleVector() {
     return doubleVector;
 }
 
+//finds the median by sorting with the  <bits/stdc++.h> sort command
+double findMedian(std::vector<double> dVect){
+
+
+    std::sort(dVect.begin(), dVect.end());
+
+
+    for(double value: dVect)
+    {
+
+        //std::cout << value << std::endl;
+    }
+
+    return dVect.at(dVect.size()/2);
+}
+
 int main()
 {
     //writeRandoms();
@@ -59,7 +75,7 @@ int main()
 
 
 
-    std::cout << "now outputting doublevector values" << std::endl;
+    std::cout << "now outputting doublevector valudasdasdases" << std::endl;
 
 
     int count = 0;
@@ -78,15 +94,16 @@ int main()
         else if(value < lowest) {
             lowest = value;
         }
-        std::cout << value << std::endl;
+        //std::cout << value << std::endl;
     }
     double avg = sum/count;
+    median = findMedian(dVect);
 
     std::cout << "There are " << count << "readings in the file."<< std::endl;
-    std::cout << "The average reading is " << avg << std::endl;
-    std::cout << "The highest reading is " << highest << std::endl;
-    std::cout << "The lowest reading is " << lowest << std::endl;
-    std::cout << "The median reading is " << median << std::endl;
+    std::cout << "The average reading is " << std::fixed << std::setprecision(3) << avg << std::endl;
+    std::cout << "The highest reading is " << std::fixed << std::setprecision(3) << highest << std::endl;
+    std::cout << "The lowest reading is " << std::fixed << std::setprecision(3) << lowest << std::endl;
+    std::cout << "The median reading is " << std::fixed << std::setprecision(3) << median << std::endl;
 
     std::cout << "Done";
 
