@@ -108,6 +108,7 @@ void randomDoubleData()
 
 int main()
 {
+    writeRandoms();
     randomDoubleData();
     return 0;
 }
