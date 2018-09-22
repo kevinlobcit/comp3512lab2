@@ -66,10 +66,8 @@ double findMedian(std::vector<double> dVect){
     return dVect.at(dVect.size()/2);
 }
 
-int main()
+void randomDoubleData()
 {
-    //writeRandoms();
-
     std::vector <double> dVect = makeDoubleVector();
 
 
@@ -99,13 +97,17 @@ int main()
     double avg = sum/count;
     median = findMedian(dVect);
 
-    std::cout << "There are " << count << "readings in the file."<< std::endl;
+    std::cout << "There are " << count << " readings in the file."<< std::endl;
     std::cout << "The average reading is " << std::fixed << std::setprecision(3) << avg << std::endl;
     std::cout << "The highest reading is " << std::fixed << std::setprecision(3) << highest << std::endl;
     std::cout << "The lowest reading is " << std::fixed << std::setprecision(3) << lowest << std::endl;
     std::cout << "The median reading is " << std::fixed << std::setprecision(3) << median << std::endl;
 
     std::cout << "Done";
+}
 
+int main()
+{
+    randomDoubleData();
     return 0;
 }
